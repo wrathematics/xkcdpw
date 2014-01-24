@@ -12,6 +12,9 @@ build_dict <- function(tab, max.len, min.len)
   
   indx <- intersect(indx, which(sapply(tmp, length) < max.len))
   
+  if (length(indx) == 0)
+    stop("Bad scrape; make sure your input parameters are sensible and try again")
+  
   dict <- dict[indx]
   
   return( dict )
