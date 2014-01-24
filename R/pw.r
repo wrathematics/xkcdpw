@@ -18,8 +18,9 @@ build_dict <- function(tab, max.len, min.len)
 
 
 
-password <- function(pw.len=4, min.len=6, max.len=10, ..., num.scrapes=1, language="english")
+password <- function(pw.len=4, min.len=6, max.len=10, language="english", ..., num.scrapes=1, ret.type="separate")
 {
+  ret.type <- match.arg(tolower(ret.type), c("separate", "combined"))
   check_inputs(pw.len=pw.len, min.len=min.len, max.len=max.len, num.scrapes=num.scrapes)
   
   url <- get_wikipedia_url(language=language)
@@ -28,6 +29,9 @@ password <- function(pw.len=4, min.len=6, max.len=10, ..., num.scrapes=1, langua
   dict <- build_dict(tab=tab, min.len=min.len, max.len=max.len)
   
   pw <- sample(x=dict, size=pw.len, replace=FALSE)
+  
+  if (ret.type == "combined")
+    pw <- paste(pw, collapse="")
   
   return( pw )
 }
