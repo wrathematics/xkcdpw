@@ -31,6 +31,9 @@ password <- function(pw.len=4, min.len=4, max.len=12, language="english", ..., n
   
   pw <- sample(x=dict, size=pw.len, replace=FALSE)
   
+  # The lazy man's "make the first character of each word uppercase, all others lower"
+  pw <- unlist(lapply(strsplit(pw, split=""), function(str) paste(toupper(str[1]), tolower(paste(str[2:length(str)], collapse="")), sep="")))
+  
   if (ret.type == "combined")
     pw <- paste(pw, collapse="")
   

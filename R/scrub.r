@@ -16,7 +16,7 @@ scrubber <- function(raw)
   # remove numbers
   tab <- gsub(pattern="[0-9]", perl=TRUE, replacement="", x=tab)
   # remove unicode spaces FUCK UNICODE SERIOUSLY
-  tab <- gsub(pattern="[\\h\\v]", perl=TRUE, replacement="", x=tab)
+  tab <- gsub(pattern="[\\h\\v]", perl=TRUE, replacement=" ", x=tab)
   # remove trailing whitespace (might as well)
   tab <- sub(pattern=" +$", replacement="", x=tab)
   
