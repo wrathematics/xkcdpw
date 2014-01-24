@@ -1,13 +1,20 @@
 # A simple url scraper.  It's not very elegant, or intelligent, but it
 # gets the job done.
-html_to_raw <- function(url)
+html_to_raw <- function(url, num.scrapes)
 {
-  html <- RCurl::getURL(url, followlocation=TRUE)
+  raw <- ""
   
-  html.parsed <- XML::htmlParse(html, asText=TRUE)
-  text <- XML::xpathSApply(html.parsed, "//text()[not(ancestor::script)]", xmlValue)
-  
-  raw <- paste(text, collapse=" ")
+  while (num.scrapes > 0)
+  {
+    html <- RCurl::getURL(url, followlocation=TRUE)
+    
+    html.parsed <- XML::htmlParse(html, asText=TRUE)
+    text <- XML::xpathSApply(html.parsed, "//text()[not(ancestor::script)]", xmlValue)
+    
+    raw <- paste(raw, paste(text, collapse=" "))
+    
+    num.scrapes <- num.scrapes - 1
+  }
   
   return( raw )
 }
