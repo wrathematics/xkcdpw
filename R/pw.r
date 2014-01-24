@@ -3,6 +3,7 @@
 build_dict <- function(tab, max.len, min.len)
 {
   dict <- unlist(strsplit(x=tab, split=" "))
+  dict <- unique(dict)
   
   tmp <- strsplit(x=dict, split="")
   
@@ -18,7 +19,7 @@ build_dict <- function(tab, max.len, min.len)
 
 
 
-password <- function(pw.len=4, min.len=6, max.len=10, language="english", ..., num.scrapes=1, ret.type="separate")
+password <- function(pw.len=4, min.len=4, max.len=12, language="english", ..., num.scrapes=1, ret.type="separate")
 {
   ret.type <- match.arg(tolower(ret.type), c("separate", "combined"))
   check_inputs(pw.len=pw.len, min.len=min.len, max.len=max.len, num.scrapes=num.scrapes)
