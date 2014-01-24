@@ -1,0 +1,12 @@
+Package: xkcdpw
+Type: Package
+Title: XKCD Passwords
+Version: 1.0
+Description: Password generation based on the XKCD comic 
+  https://m.xkcd.com/936/.  A random Wikipedia page is used
+  rather than a dictionary.
+License: BSD 2-clause License
+Depends: R (>= 2.14.0), RCurl, XML
+NeedsCompilation: no
+Author: Drew Schmidt
+Maintainer: Drew Schmidt <wrathematics@gmail.com>

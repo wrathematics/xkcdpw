@@ -1,0 +1,11 @@
+This R package creates portmanteau-style passwords, as in this XKCD comic:
+https://xkcd.com/936/
+
+Rather than using a dictionary, a random Wikipedia page is used for the 
+"dictionary".  Then, a random selection of words is chosen for the password.
+See package documentation for details.
+
+The package should install via 
+R CMD INSTALL xkcdpw_0.1.tar.gz, 
+or via the devtools package by way of:
+install_github(repo="xkcdpw", username="wrathematics")
