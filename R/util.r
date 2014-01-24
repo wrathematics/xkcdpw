@@ -28,44 +28,57 @@ is.int <- function(n)
 
 
 
-# Input checker for the main function, password()
-# Always check your inputs, kiddos.
-check_inputs <- function(pw.len, min.len, max.len, num.scrapes)
+# Input checker template
+check <- function(x, check)
 {
-  # Integers only
-  if (!is.int(pw.len))
-    stop("argument 'pw.len' must be an integer")
-  if (!is.int(min.len))
-    stop("argument 'min.len' must be an integer")
-  if (!is.int(max.len))
-    stop("argument 'max.len' must be an integer")
-  if (!is.int(num.scrapes))
-    stop("argument 'num.scrapes' must be an integer")
+  check <- match.arg(check, c("integer", "positive"))
+  nm <- deparse(substitute(x))
   
-  
-  # Bounds
-  if (pw.len < 1)
-    stop("argument 'pw.len' must be positive")
-  if (min.len < 1)
-    stop("argument 'min.len' must be positive")
-  if (max.len < 1)
-    stop("argument 'max.len' must be positive")
-  if (num.scrapes < 1)
-    stop("argument 'num.scrapes' must be positive")
-  
-  if (min.len > max.len)
-    stop("argument 'min.len' must be less than argument 'max.len'")
-  
-  if (num.scrapes > 5)
-    stop("argument 'num.scrapes' must be no more than 5")
-  
+  if (check == "integer")
+  {
+    if (!is.int(x))
+      stop(paste("argument '", nm, "' must be an integer", sep=""))
+  }
+  else if (check == "positive")
+  {
+    if (x <= 0)
+      stop(paste("argument '", nm, "' must be positive", sep=""))
+  }
   
   invisible()
 }
 
 
 
+# Input checker for the main function, password()
+# Always check your inputs, kiddos.
+check_inputs <- function(pw.len, min.len, max.len, num.scrapes)
+{
+  # Integers only
+  check(pw.len, "int")
+  check(min.len, "int")
+  check(max.len, "int")
+  check(num.scrapes, "int")
+  
+  # Bounds
+  check(pw.len, "pos")
+  check(min.len, "pos")
+  check(max.len, "pos")
+  check(num.scrapes, "pos")
+  
+  # Other
+  if (min.len > max.len)
+    stop("argument 'min.len' must be less than argument 'max.len'")
+  
+  if (num.scrapes > 5)
+    stop("argument 'num.scrapes' must be no more than 5")
+  
+  invisible()
+}
 
+
+
+# Choose which wikipedia url to use based on desired language
 get_wikipedia_url <- function(language)
 {
   
