@@ -82,16 +82,24 @@ check_inputs <- function(pw.len, min.len, max.len, num.scrapes)
 get_wikipedia_url <- function(language)
 {
   
-  french <- c("french", "francais", "français")
+  french <- c("french", "francais", "fran\u00E7ais")
+  Encoding(french) <- "UTF-8"
   german <- c("deutsch", "german")
+  Encoding(german) <- "UTF-8"
   italian <- c("italian", "italiano")
+  Encoding(italian) <- "UTF-8"
   polish <- c("polish", "polski")
-  portugese <- c("portugese", "português")
-  russian <- c("russian", "pусский")
-  spanish <- c("spanish", "espanol", "español")
+  Encoding(polish) <- "UTF-8"
+  portugese <- c("portugese", "portugu\u00EAs")
+  Encoding(portugese) <- "UTF-8"
+  russian <- c("russian", "\u0443\u0441\u0441\u043A\u0438\u0439")
+  Encoding(russian) <- "UTF-8"
+  spanish <- c("spanish", "espanol", "espa\u00F1ol")
+  Encoding(spanish) <- "UTF-8"
   
   languages <- c("english", french, german, italian, polish, portugese, russian, spanish)
   language <- match.arg(tolower(language), languages)
+  
   
   # country code
   if (language == "english")

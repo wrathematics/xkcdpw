@@ -40,13 +40,13 @@
   scraped.  Currently, options are:
   \itemize{
     \item \code{english} for English
-    \item \code{french}, \code{francais}, or \code{français} for French
+    \item \code{french}, \code{francais}, or \code{fran} for French
     \item \code{german} or \code{deutsch} for German
     \item \code{italian} or \code{italiano} for Italian
     \item \code{polish} or \code{polski} for Polish
-    \item \code{portugese} or \code{português} for Portugese
-    \item \code{russian} or \code{pусский} for Russian
-    \item \code{spanish}, \code{espanol}, or \code{español} for Spanish
+    \item \code{portugese} or \code{p} for Portugese
+    \item \code{russian} or \code{} for Russian
+    \item \code{spanish}, \code{espanol}, or \code{espa} for Spanish
   }
   This argument is case-insensitive.
   
