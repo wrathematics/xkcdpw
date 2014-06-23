@@ -1,11 +1,36 @@
-This R package creates portmanteau-style passwords, as in this XKCD comic:
-https://xkcd.com/936/
+What is this?
+====================================================================
+This R package creates portmanteau-style passwords, as in this XKCD
+comic: https://xkcd.com/936/
 
-Rather than using a dictionary, a random Wikipedia page is used for the 
-"dictionary".  Then, a random selection of words is chosen for the password.
-See package documentation for details.
+Rather than using a dictionary, a random Wikipedia page is used for
+the "dictionary".  Then, a random selection of words is chosen for
+the password.  See package documentation for details.
 
-The package should install via 
-R CMD INSTALL xkcdpw_0.1.tar.gz, 
-or via the devtools package by way of:
+
+
+How do I install it?
+====================================================================
+To install the package from github, I recommend using Hadley 
+Wickham's devtools package, which you can get from the CRAN.  After
+installing that, you can enter
+
+library(devtools)
 install_github(repo="xkcdpw", username="wrathematics")
+
+into an R terminal to install this package.  You can also install 
+the package a simple via:
+
+R CMD INSTALL xkcdpw_0.1.tar.gz
+
+
+
+Software license and disclaimer
+====================================================================
+This software is licensed under the permissive 2-clause BSD license.
+You can find a quick summary of the license here:
+
+https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29
+
+The full terms of the license (it's very short) are contained in the
+LICENSE file in the root directory of the project.
